@@ -1,0 +1,84 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100vh;
+  width: 100vw;
+  background: url("background.png") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.cake {
+  position: relative;
+  width: 36vw;
+  height: auto;
+  margin: auto;
+}
+
+.cake img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flame {
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: radial-gradient(circle, yellow 40%, orange 70%, transparent 100%);
+  border-radius: 50%;
+  animation: flicker 0.15s infinite alternate;
+  cursor: pointer;
+}
+
+.flame.left {
+  top: 14%;
+  left: 38%;
+}
+
+.flame.right {
+  top: 14%;
+  left: 56%;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(1.1) translateY(-2px); opacity: 0.8; }
+}
+
+/* Music note */
+.note {
+  position: absolute;
+  font-size: 24px;
+  color: purple;
+  opacity: 0;
+  animation: floatUp 2.5s linear forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-200px); opacity: 0; }
+}
+
+.text {
+  position: absolute;   /* take it out of the flex flow */
+  left: 5%;             /* move it to the left side */
+  top: 30%;             /* adjust vertical position */
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 1rem;
+  color: #ffffff; /* pinkish-purple */
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.4;
+  /* text-shadow: 2px 2px 6px rgba(0,0,0,0.3); */
+}

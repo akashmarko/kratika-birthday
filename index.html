@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kratika's Birthday</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mediaqueries.css">
+
+</head>
+<body>
+  <div class="background">
+    <div class="text">Kratika, make the sweetest wish in your heart and blow out the candles.</div>
+    <div class="cake">
+      <img src="cake.png" alt="Cake">
+      <div class="flame left" onclick="blowOut(this)"></div>
+      <div class="flame right" onclick="blowOut(this)"></div>
+    </div>
+  </div>
+
+  <audio id="blowSound" src="myvoice.mp3"></audio>
+
+<script>
+  let noteInterval;
+  let hasPlayed = false; // only for audio+notes
+
+  function blowOut(el) {
+    // always hide the clicked flame
+    el.style.display = "none";
+
+    // but only run audio + notes once
+    if (!hasPlayed) {
+      hasPlayed = true;
+
+      let audio = document.getElementById("blowSound");
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+
+      // start spawning notes every 400ms
+      noteInterval = setInterval(createNote, 400);
+
+      // stop when audio ends
+      audio.onended = () => {
+        clearInterval(noteInterval);
+      };
+    }
+  }
+
+  function createNote() {
+    const notes = ["♪", "♫", "♩", "♬"];
+    const note = document.createElement("div");
+    note.className = "note";
+    note.innerText = notes[Math.floor(Math.random() * notes.length)];
+    document.body.appendChild(note);
+
+    // randomize X position across full screen width
+    note.style.left = Math.random() * window.innerWidth + "px";
+    note.style.bottom = "50px";
+
+    // random purple shades
+    const purples = ["#800080", "#9932CC", "#BA55D3", "#DA70D6", "#EE82EE"];
+    note.style.color = purples[Math.floor(Math.random() * purples.length)];
+
+    setTimeout(() => note.remove(), 2500);
+  }
+</script>
+
+
+</body>
+
+</html>
+
+

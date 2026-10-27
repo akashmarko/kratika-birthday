@@ -1,0 +1,135 @@
+/* Media Queries for Mobile Responsiveness */
+
+/* Mobile Phones (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .background {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover;         /* ✅ force full cover */
+    background-position: center;    /* ✅ center properly */
+  }
+
+  .cake {
+    width: 100vw;
+    margin-bottom: 20vw;
+  }
+
+  .flame {
+    width: 16px;
+    height: 24px;
+  }
+
+  .flame.left {
+    top: 13%;
+    left: 38%;
+  }
+
+  .flame.right {
+    top: 13%;
+    left: 56%;
+  }
+
+  .text {
+    position: relative;
+    left: auto;
+    top: auto;
+    font-size: 0.8rem;
+    max-width: 300px;
+    margin-bottom: auto;
+    margin-top: auto;
+    padding: 0 15px;
+    /* color: #00008B; */
+  }
+
+  .note {
+    font-size: 20px;
+  }
+}
+
+/* Very Small Phones (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .cake {
+    width: 115vw;
+    margin-bottom: 36vw;
+    margin-left: -7.5vw;
+  }
+
+  .text {
+    font-size: 0.7rem;
+    max-width: 250px;
+    line-height: 1.3;
+    /* color: #00008B; */
+  }
+
+  .flame {
+    width: 18px;
+    height: 26px;
+  }
+
+  .flame.left {
+    top: 13%;
+    left: 37%;
+  }
+
+  .flame.right {
+    top: 13%;
+    left: 56%;
+  }
+
+  .note {
+    font-size: 18px;
+  }
+
+  .background {
+    background-size: cover;        /* ✅ fix from contain → cover */
+    background-position: center;   /* ✅ keep centered */
+  }
+}
+
+/* Landscape Mode for Phones */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .background {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-size: cover;        /* ✅ ensure full cover in landscape */
+    background-position: center;
+  }
+
+  .text {
+    width: 40%;
+    margin: 0;
+    text-align: left;
+    font-size: 0.7rem;
+  }
+
+  .cake {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+@media (max-width: 768px) {
+  @keyframes flicker {
+    0% { transform: scale(0.8) translateY(0); opacity: 1; }
+    100% { transform: scale(0.9) translateY(-1px); opacity: 0.8; }
+  }
+}
